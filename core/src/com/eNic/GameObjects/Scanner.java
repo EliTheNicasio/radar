@@ -2,6 +2,7 @@ package com.eNic.GameObjects;
 
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 public class Scanner {
 
@@ -21,7 +22,7 @@ public class Scanner {
 	rotation = 0;
 	speed = 100;
 	isOn = false;
-	float[] vertices = { 238, 400, 238, 170, 242, 170, 242, 400};
+	float[] vertices = { 230, 400, 230, 150, 250, 150, 250, 400};
 	hitBox = new Polygon(vertices);
 	hitBox.setOrigin(240, 400);
     }

@@ -7,8 +7,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AssetLoader {
     
-    public static Texture blackTexture, radarTexture, scannerTexture;
-    public static TextureRegion black, radar, scanner;
+    public static Texture blackTexture, radarTexture, scannerTexture,
+    			  blipUTexture, blipDTexture;
+    public static TextureRegion black, radar, scanner, undetectedBlip,
+    				detectedBlip;
     
     public static void load() {
 	blackTexture = new Texture(Gdx.files.internal("black.jpg"));
@@ -26,9 +28,21 @@ public class AssetLoader {
 	
 	scanner = new TextureRegion(scannerTexture, 0, 0, 460, 460);
 	scanner.flip(false, true);
+	
+	blipUTexture = new Texture(Gdx.files.internal("undetectedBlip.png"));
+	blipUTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+	
+	undetectedBlip = new TextureRegion(blipUTexture, 0, 0, 10, 10);
+	
+	blipDTexture = new Texture(Gdx.files.internal("detectedBlip.png"));
+	blipDTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+	
+	detectedBlip = new TextureRegion(blipDTexture, 0, 0, 10, 10);
     }
     
     public static void dispose() {
 	blackTexture.dispose();
+	radarTexture.dispose();
+	scannerTexture.dispose();
     }
 }
