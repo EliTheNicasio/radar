@@ -37,7 +37,7 @@ public class AssetLoader {
 	blipDTexture = new Texture(Gdx.files.internal("detectedBlip.png"));
 	blipDTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 	
-	detectedBlip = new TextureRegion(blipDTexture, 0, 0, 10, 10);
+	detectedBlip = new TextureRegion(blipDTexture, 0, 0, 15, 15);
     }
     
     public static void dispose() {

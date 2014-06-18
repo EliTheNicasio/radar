@@ -28,10 +28,6 @@ public class GameWorld {
 	scanner = new Scanner(gameWidth / 2, gameHeight / 2);
 	blips = new ArrayList<Blip>();
 	blipRandomizer = 2;
-	Blip blip2 = new Blip();
-	blip2.setX(411.05017f);
-	blip2.setY(539.24756f);
-	blips.add(blip2);
     }
     
     public void update(float delta) {

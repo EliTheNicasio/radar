@@ -19,14 +19,14 @@ public class Blip {
 	    	  alphaDetectIn = new Value(), alphaDetectOut = new Value();
     
     public Blip() {
-	Circle boundingCircle = new Circle(240, 400, 230);
+	Circle boundingCircle = new Circle(240, 500, 230);
 	position = new Vector2(0, 0);
 	time = 0;
 	lifeTime = (float) (Math.random() * 7 + 4);
 	
 	while(!(boundingCircle.contains(position))) {
 	    position.x = (float) (Math.random() * 460 + 11);
-	    position.y = (float) (Math.random() * 460 + 171);
+	    position.y = (float) (Math.random() * 460 + 271);
 	}
 	
 	detected = false;
@@ -43,13 +43,21 @@ public class Blip {
 	Tween.to(alphaUndetectOut, -1, 1f).target(0)
 		.ease(TweenEquations.easeOutQuad).start(managerUndetectOut);
 	
+	prepareDetectedIn();
+	prepareDetectedOut();
+	alphaDetectOut.setValue(0);
+    }
+
+    public void prepareDetectedIn() {
 	alphaDetectIn.setValue(0);
 	Tween.registerAccessor(Value.class, new ValueAccessor());
 	managerDetectIn = new TweenManager();
 	Tween.to(alphaDetectIn, -1, 1f).target(1)
 		.ease(TweenEquations.easeOutQuad).start(managerDetectIn);
-	
-	alphaDetectOut.setValue(0);
+    }
+    
+    public void prepareDetectedOut() {
+	alphaDetectOut.setValue(1);
 	Tween.registerAccessor(Value.class, new ValueAccessor());
 	managerDetectOut = new TweenManager();
 	Tween.to(alphaDetectOut, -1, 1f).target(0)
@@ -62,6 +70,10 @@ public class Blip {
     
     public void setDetected(boolean isDetected) {
 	detected = isDetected;
+    }
+    
+    public void extendLifeTime(float delta) {
+	lifeTime += delta;
     }
     
     public void setX(float x) {

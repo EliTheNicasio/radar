@@ -62,9 +62,9 @@ public class GameRenderer {
     
     private void initAssets() {
 	radar = new Sprite(AssetLoader.radarTexture);
-	radar.setCenter(240, 400);
+	radar.setCenter(240, 500);
 	scannerLine = new Sprite(AssetLoader.scanner);
-	scannerLine.setCenter(240, 400);
+	scannerLine.setCenter(240, 500);
 	prepareFades();
 	alphaOut.setValue(0);
 //	detectedBlip = new Sprite(AssetLoader.detectedBlip);
@@ -93,6 +93,7 @@ public class GameRenderer {
 	    detectedSprite.setCenter(blip.getX(), blip.getY());
 	    if(blip.isDetected()) {
 		drawDetectedIn(delta, detectedSprite, blip);
+		blip.extendLifeTime(delta);
 	    } else {
 		drawDetectedOut(delta, detectedSprite, blip);
 	    }
@@ -129,7 +130,8 @@ public class GameRenderer {
 	} else {
 	    sprite.setColor(1f, 1f, 1f, blip.getAlphaDetectIn().getValue());
 	    sprite.draw(batcher);
-	    blip.getAlphaDetectOut().setValue(1);
+	    blip.prepareDetectedIn();
+	    blip.prepareDetectedOut();
 	    blip.setDetected(false);
 	}
     }
@@ -222,7 +224,7 @@ public class GameRenderer {
 	
 	drawRadar(delta);
 	batcher.end();
-//	testPolygon();
+	testPolygon();
 //	testBlip();
     }
 }

@@ -22,9 +22,9 @@ public class Scanner {
 	rotation = 0;
 	speed = 100;
 	isOn = false;
-	float[] vertices = { 230, 400, 230, 150, 250, 150, 250, 400};
+	float[] vertices = { 230, 500, 230, 250, 250, 250, 250, 500};
 	hitBox = new Polygon(vertices);
-	hitBox.setOrigin(240, 400);
+	hitBox.setOrigin(240, 500);
     }
     
     public void update(float delta) {
